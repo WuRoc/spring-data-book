@@ -3,9 +3,6 @@ package com.oreilly.springdata.hadoop.streaming;
 import org.apache.hadoop.fs.FileSystem;
 import org.springframework.util.Assert;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-
 public class HdfsTextFileWriterFactory implements HdfsWriterFactory {
 
 	private FileSystem fileSystem;
