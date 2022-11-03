@@ -3,12 +3,15 @@ package com.oreilly.springdata.hadoop.streaming;
 import org.apache.hadoop.fs.FileSystem;
 import org.springframework.util.Assert;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class HdfsTextFileWriterFactory implements HdfsWriterFactory {
 
 	private FileSystem fileSystem;
 
 	public static final String DEFAULT_BASE_FILENAME = "data";
-	public static final String DEFAULT_BASE_PATH = "/data/";
+	public static final String DEFAULT_BASE_PATH = "/import/data/hive/log/";
 	public static final String DEFAULT_FILE_SUFFIX = "log";
 	public static long DEFAULT_ROLLOVER_THRESHOLD_IN_BYTES = 10*1024*1024; //10MB
 	

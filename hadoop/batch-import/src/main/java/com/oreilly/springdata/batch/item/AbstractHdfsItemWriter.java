@@ -1,5 +1,7 @@
 package com.oreilly.springdata.batch.item;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
@@ -123,7 +125,8 @@ public abstract class AbstractHdfsItemWriter<T> implements ItemWriter<T> {
 	}
 	
 	public String getFileName() {
-		return basePath + baseFilename + "-" + getCounter() + "." + fileSuffix;
+		String timeStamp = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
+		return basePath + "dt=" + timeStamp + "/" + baseFilename + "-" + getCounter() + "." + fileSuffix;
 	}
 
 }

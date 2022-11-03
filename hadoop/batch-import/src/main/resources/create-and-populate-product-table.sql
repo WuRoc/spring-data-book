@@ -2,9 +2,9 @@ drop table if exists product;
 
 create table product (
 	id varchar(255) not null,
+    price varchar(255) not null,
 	name varchar(255) not null,
-	description varchar(255) not null,
-	price float not null,
+    description varchar(1000) not null,
 	primary key (id)
 );
 
@@ -23,4 +23,5 @@ insert into product (id,name,description,price) values('PR2...313','Garmin nuvi 
 insert into product (id,name,description,price) values('PR2...314','Roku 2 XS 1080p Streaming Player','',99.00);
 insert into product (id,name,description,price) values('PR2...315','Sony BDP-S590 3D Blu-ray Disk Player','',86.99);
 insert into product (id,name,description,price) values('PR2...316','GoPro HD HERO2','',241.14);
-insert into product (id,name,description,price) values('PR2...317','Toshiba 32C120U 32-Inch LCD HDTV','',239.99);
+insert into product (id,name,description,price) values('PR2...317','Toshiba 32C120U 32-Inch LCD HDTV','aa',239.99);
+insert into product (id,price,name,description) values('122323231','dim','tmp_english_student_read_speed_ninet','select student_id,stage_id,case when stage_speed >=200 then ceil(stage_speed /2) else stage_speed end as diff_stage_speed from (selecta2.student_id as student_id, stage_id, case when diff_stage_speed is not null then  diff_stage_speed else speed_value end as stage_speed,max_diff_day,case when max_diff_day = 0 then  1 when max_diff_day >0 and max_diff_day <= 6 then 7 when max_diff_day >6 and max_diff_day <= 14  then 15 from dim.tmp_english_student_read_speed_ninet');

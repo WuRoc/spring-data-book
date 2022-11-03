@@ -31,7 +31,7 @@ public class Product implements Serializable {
 	private String id;	
 	private String name;	
 	private String description;	
-	private BigDecimal price;
+	private String price;
 
 	public String getId() {
 		return id;
@@ -57,13 +57,13 @@ public class Product implements Serializable {
 		this.description = description;
 	}
 
-	@NotNull
-	@Min(0)
-	public BigDecimal getPrice() {
+//	@NotNull
+//	@Min(0)
+	public String getPrice() {
 		return price;
 	}
 
-	public void setPrice(BigDecimal price) {
+	public void setPrice(String price) {
 		this.price = price;
 	}
 	
