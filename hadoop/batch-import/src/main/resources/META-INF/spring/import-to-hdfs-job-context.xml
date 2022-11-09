@@ -19,17 +19,17 @@
 	
 	<bean id="jdbcReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
 		<property name="dataSource" ref="dataSource"/>
-		<property name="sql" value="select id, name, description, price from product"/>
+		<property name="sql" value="select id, name, description, price, date from product  where date in (select date_format(now(),'%Y-%m-%d'))"/>
 		<property name="rowMapper" ref="productRowMapper"/>
 	</bean>
 
  	<bean id="productRowMapper" class="com.oreilly.springdata.domain.ProductRowMapper"/>	
 		
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.SingleConnectionDataSource">
-		<property name="driverClassName" value="org.h2.Driver" />
-		<property name="url" value="jdbc:h2:tcp://localhost/mem:sbia_ch02" />
-		<property name="username" value="sa" />
-		<property name="password" value="" />
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://172.28.30.95:3306/azkaban" />
+		<property name="username" value="root" />
+		<property name="password" value="root" />
 		<property name="suppressClose" value="true" />
 	</bean>
 	
@@ -42,11 +42,11 @@
 		
 		<property name="lineAggregator">
 			<bean class="org.springframework.batch.item.file.transform.DelimitedLineAggregator">
-				<!--按","符号对行进行切割-->
+				<!--按"^"符号对行进行切割-->
 				<property name="delimiter" value='^'/>
 				<property name="fieldExtractor">
 				  <bean class="org.springframework.batch.item.file.transform.BeanWrapperFieldExtractor">
-					<property name="names" value="id,price,name,description" />
+					<property name="names" value="id,price,name,description,date" />
 				  </bean>
 				</property>
 			</bean>			

@@ -13,6 +13,7 @@ public class ProductRowMapper implements RowMapper<Product> {
 	    product.setName(rs.getString("name"));
 	    product.setDescription(rs.getString("description"));
 	    product.setPrice(rs.getString("price"));
+		product.setDate(rs.getString("date"));
 	    return product;	    
 	}
 	

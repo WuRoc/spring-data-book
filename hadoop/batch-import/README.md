@@ -36,7 +36,7 @@ To view the imported product database
 # ROW FORMAT should have delimiters used to terminate the fields and lines like in the above example the fields are terminated with comma (“,”). 
 # The default location of Hive table is overwritten by using LOCATION.
     $ CREATE EXTERNAL TABLE IF NOT EXISTS test_product(id string,name string,description string, price double) ROW format delimited fields terminated BY ',' LOCATION '/import/data/products/';
-
+#### 里面的列名不能是date，以及其他的关键字
     # CREATE EXTERNAL TABLE IF NOT EXISTS test_products(id STRING,theme_name string,sql_name STRING, sql_description STRING) PARTITIONED BY (dt STRING) ROW format delimited fields terminated BY ',' LOCATION '/import/data/hive/log/';
 #### 因为我们是先把数据导入到hdfs 然后进行在建表，这个时候数据还在hdfs 没有进行自动映射，在第一次映射的时候我们需要修复一次hive表。
     $ Msck repair table <db_name>.<table_name>

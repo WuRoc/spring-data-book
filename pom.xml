@@ -19,14 +19,7 @@
 	</properties>
 
 	<modules>
-		<module>jpa</module>
-		<module>mongodb</module>
-		<module>querydsl</module>
-		<module>neo4j</module>
 		<module>jdbc</module>
-		<module>redis</module>
-		<module>gemfire</module>
-		<module>rest</module>
 	</modules>
 
 	<dependencies>

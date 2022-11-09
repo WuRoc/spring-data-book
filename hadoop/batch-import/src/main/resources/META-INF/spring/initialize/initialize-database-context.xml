@@ -8,16 +8,16 @@
 		http://www.springframework.org/schema/batch https://www.springframework.org/schema/batch/spring-batch-2.1.xsd">
 
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.SingleConnectionDataSource">
-		<property name="driverClassName" value="org.h2.Driver" />
-		<property name="url" value="jdbc:h2:mem:sbia_ch02;DB_CLOSE_DELAY=-1" />
-		<property name="username" value="sa" />
-		<property name="password" value="" />
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://172.28.30.95:3306/azkaban" />
+		<property name="username" value="root" />
+		<property name="password" value="root" />
 		<property name="suppressClose" value="true" />
 	</bean>
 
 	<jdbc:initialize-database data-source="dataSource">
-		<jdbc:script location="classpath:/org/springframework/batch/core/schema-h2.sql"/>
-		<jdbc:script location="classpath:/create-and-populate-product-table.sql" />
+		<jdbc:script location="classpath:/org/springframework/batch/core/schema-mysql.sql"/>
+<!--		<jdbc:script location="classpath:/create-and-populate-product-table.sql" />-->
 	</jdbc:initialize-database>
 
 </beans>

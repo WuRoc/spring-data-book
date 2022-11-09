@@ -33,6 +33,8 @@ public class Product implements Serializable {
 	private String description;	
 	private String price;
 
+	private String date;
+
 	public String getId() {
 		return id;
 	}
@@ -66,7 +68,14 @@ public class Product implements Serializable {
 	public void setPrice(String price) {
 		this.price = price;
 	}
-	
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public String getDate() {
+		return date;
+	}
 	@Override
 	public String toString() {
 		return id + "," + name + "," + description + "," + price; 		

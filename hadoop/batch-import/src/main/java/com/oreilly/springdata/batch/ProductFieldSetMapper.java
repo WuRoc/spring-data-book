@@ -27,6 +27,7 @@ public class ProductFieldSetMapper implements FieldSetMapper<Product> {
 		product.setName(fieldSet.readString("NAME"));
 		product.setDescription(fieldSet.readString("DESCRIPTION"));
 		product.setPrice(fieldSet.readString("PRICE"));
+		product.setDate(fieldSet.readString("DATE"));
 		return product;
 	}
 	
