@@ -19,11 +19,11 @@
 	
 	<bean id="jdbcReader" class="org.springframework.batch.item.database.JdbcCursorItemReader">
 		<property name="dataSource" ref="dataSource"/>
-		<property name="sql" value="select id, name, description, price, date from product  where date in (select date_format(now(),'%Y-%m-%d'))"/>
-		<property name="rowMapper" ref="productRowMapper"/>
+		<property name="sql" value="select id, theme_name, table_name, sql_statement, date from hive_sql_entity  where date in (select date_format(now(),'%Y-%m-%d'))"/>
+		<property name="rowMapper" ref="hiveSqlEntityRowMapper"/>
 	</bean>
 
- 	<bean id="productRowMapper" class="com.oreilly.springdata.domain.ProductRowMapper"/>	
+ 	<bean id="hiveSqlEntityRowMapper" class="com.oreilly.springdata.domain.HiveSqlEntityRowMapper"/>
 		
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.SingleConnectionDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
@@ -36,7 +36,7 @@
 	<bean id="hdfsWriter" class="com.oreilly.springdata.batch.item.HdfsTextItemWriter">
 		<constructor-arg ref="hadoopFs"/>
 <!--	    <property name="basePath" value="/import/data/hive/log/dt=2022-11-01/"/>-->
-		<property name="baseFilename" value="product"/>
+		<property name="baseFilename" value="hiveSqlEntity"/>
 		<property name="fileSuffix" value="txt"/>
 		<property name="rolloverThresholdInBytes" value="1000"/>
 		
@@ -46,7 +46,7 @@
 				<property name="delimiter" value='^'/>
 				<property name="fieldExtractor">
 				  <bean class="org.springframework.batch.item.file.transform.BeanWrapperFieldExtractor">
-					<property name="names" value="id,price,name,description,date" />
+					<property name="names" value="id,theme_name,table_name,sql_statement,date" />
 				  </bean>
 				</property>
 			</bean>			
